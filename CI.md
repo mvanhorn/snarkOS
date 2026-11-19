@@ -18,7 +18,7 @@ Jobs run in one of two places:
 
 | Event | Runs |
 |---|---|
-| Pull request | `fmt`, `deny`, `shellcheck`, `source-checks`, `machete`, `lint`, `test`, `build-snarkos`, `devnet`, `ci-ok` |
+| Pull request | `fmt`, `deny`, `shellcheck`, `source-checks`, `machete`, `lint`, `lint-locktick`, `test`, `build-snarkos`, `devnet`, `ci-ok` |
 | Push to `staging`, `canary`, `testnet`, `mainnet`, or manual dispatch | the above, plus `devnet-merge`, `windows` |
 | Push to `canary`, `testnet`, `mainnet`, or manual dispatch | the above, plus `devnet-release` |
 
@@ -34,8 +34,9 @@ marked "release" only on the third. The other jobs run on every event.
 | `fmt` | hosted | all | | `cargo fmt --check` on `FMT_TOOLCHAIN` |
 | `deny` | hosted | all | | `cargo deny --workspace check bans licenses sources`, plus `advisories` everywhere but `staging`, whose advisories [`bump-advisories.yml`](.github/workflows/bump-advisories.yml) bumps nightly |
 | `shellcheck` | hosted | all | | `.ci/*.sh`, `scripts/*.sh` |
-| `source-checks` | hosted | all | | `scripts/check_sources.py`: license headers and `locktick` imports in `.rs` files |
+| `source-checks` | hosted | all | | `scripts/check_sources.py`: license headers in `.rs` files |
 | `lint` | `cpu` | all | 90 | clippy, default and `--all-features`; `cargo check --all-features` of `snarkos-node-metrics` and `snarkos-display` |
+| `lint-locktick` | `cpu` | all | 90 | clippy with `--cfg locktick`, through the `cargo locktick-clippy` alias, after checking that the alias applies the cfg |
 | `test (light)` | hosted | all | 90 | `snarkos-account`, `-utilities`, `-node-tcp`, `-node-sync-locators`, `-node-network` |
 | `test (cdn)` | hosted | all | 90 | `snarkos-node-cdn` |
 | `test (messages)` | hosted | all | 90 | `snarkos-node-bft-events`, `-node-router-messages`, `-node-bft-ledger-service` |
