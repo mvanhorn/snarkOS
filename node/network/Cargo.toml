@@ -17,7 +17,6 @@ license = "Apache-2.0"
 edition = "2024"
 
 [features]
-locktick = [ "dep:locktick", "snarkos-node-tcp/locktick" ]
 metrics = [ ]
 test = [ ]
 
@@ -25,14 +24,6 @@ test = [ ]
 workspace = true
 
 [dependencies.bytes]
-workspace = true
-
-[dependencies.locktick]
-workspace = true
-features = [ "parking_lot" ]
-optional = true
-
-[dependencies.parking_lot]
 workspace = true
 
 [dependencies.rand]
@@ -48,6 +39,9 @@ workspace = true
 workspace = true
 
 [dependencies.snarkos-node-tcp]
+workspace = true
+
+[dependencies.snarkos-utilities]
 workspace = true
 
 [dependencies.snarkvm]
