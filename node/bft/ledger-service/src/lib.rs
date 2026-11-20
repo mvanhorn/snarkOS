@@ -25,6 +25,9 @@ extern crate snarkos_node_metrics as metrics;
 mod helpers;
 pub use helpers::*;
 
+pub mod deployment_freeze;
+pub use deployment_freeze::*;
+
 #[cfg(feature = "ledger")]
 pub mod ledger;
 #[cfg(feature = "ledger")]
