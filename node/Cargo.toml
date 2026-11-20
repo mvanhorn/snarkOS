@@ -135,6 +135,10 @@ workspace = true
 [dependencies.snarkos-node-rest]
 workspace = true
 
+[dependencies.snarkos-node-bft-ledger-service]
+workspace = true
+features = [ "ledger" ]
+
 [dependencies.snarkos-node-router]
 workspace = true
 
@@ -188,6 +192,14 @@ features = [ "env-filter", "fmt" ]
 
 [dev-dependencies.rand_chacha]
 workspace = true
+
+[dev-dependencies.snarkvm]
+workspace = true
+features = [ "test-helpers" ]
+
+[dev-dependencies.snarkos-node-bft-ledger-service]
+workspace = true
+features = [ "ledger", "mock" ]
 
 [package.metadata.cargo-machete]
 ignored = [

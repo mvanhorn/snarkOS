@@ -35,10 +35,10 @@ init_log_dir
 
 trap stop_nodes EXIT
 
-# The heights of V1..V21 match the test defaults; only V22 differs.
+# The heights of V1..V21 match the test defaults; only V22 differs. V23 stays unscheduled.
 base_heights="0,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24"
-upgraded_heights="$base_heights,$activation_height"
-outdated_heights="$base_heights,4294967295"
+upgraded_heights="$base_heights,$activation_height,4294967295"
+outdated_heights="$base_heights,4294967295,4294967295"
 
 common_flags=(
   --nodisplay --nobanner --noupdater "--network=$network_id" "--verbosity=$NODE_VERBOSITY"
